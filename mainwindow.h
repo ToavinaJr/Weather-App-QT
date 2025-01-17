@@ -6,6 +6,10 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonObject>
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;

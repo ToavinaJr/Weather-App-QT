@@ -291,10 +291,31 @@ void MainWindow::onWeatherDataReceived()
     {
         QByteArray responseData = reply->readAll();
         QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
+        QJsonObject jsonObject = jsonDoc.object();
         QString jsonString = jsonDoc.toJson(QJsonDocument::Indented);
+
         qDebug() << jsonString;
 
         ui->labelJSonText->setText(jsonString);
+
+        QString weatherDescription = jsonObject["weather"].toArray()[0].toObject()["description"].toString();
+        int weatherConditionCode = jsonObject["weather"].toArray()[0].toObject()["id"].toInt();
+
+        double windSpeed = jsonObject["weather"].toArray()[0].toObject()["speed"].toDouble();
+
+        // Charger les températures
+        double temp = jsonObject["main"].toArray()[0].toObject()["temp"].toDouble();
+        double temp_min = jsonObject["main"].toArray()[0].toObject()["temp_min"].toDouble();
+        double temp_max = jsonObject["main"].toArray()[0].toObject()["temp_ma"].toDouble();
+
+        double feel_like = jsonObject["main"].toArray()[0].toObject()["feels_like"].toDouble();
+        double humidity = jsonObject["main"].toArray()[0].toObject()["humidity"].toDouble();
+
+        QString city = jsonObject["name"].toString();
+        QString country = jsonObject["country"].toString();
+
+        // Setting all the rights labels
+        ui->label_temperature->setText(QString::number(temp));
     }
     else
     {
