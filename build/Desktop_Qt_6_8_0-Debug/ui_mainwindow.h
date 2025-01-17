@@ -13,7 +13,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGroupBox>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -40,18 +39,21 @@ public:
     QLabel *label_4;
     QLabel *label_17;
     QLabel *label_wind;
-    QLabel *label_humidity_2;
+    QLabel *label_humidity;
     QLabel *label_11;
     QLabel *label_12;
     QLabel *label_city;
     QLabel *label_country;
     QLabel *label_15;
     QLabel *label_feel;
+    QLabel *label_min_2;
+    QLabel *label_min;
+    QLabel *label_9;
+    QLabel *label_max;
     QTextEdit *labelJSonText;
-    QWidget *widget;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label;
     QPushButton *btn_go;
+    QLabel *label_7;
+    QLabel *label_8;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -64,13 +66,13 @@ public:
         centralwidget->setObjectName("centralwidget");
         comboCountry = new QComboBox(centralwidget);
         comboCountry->setObjectName("comboCountry");
-        comboCountry->setGeometry(QRect(210, 20, 241, 25));
+        comboCountry->setGeometry(QRect(170, 20, 291, 25));
         textZipCode = new QLineEdit(centralwidget);
         textZipCode->setObjectName("textZipCode");
-        textZipCode->setGeometry(QRect(490, 20, 113, 25));
+        textZipCode->setGeometry(QRect(170, 60, 291, 25));
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName("groupBox");
-        groupBox->setGeometry(QRect(40, 80, 691, 211));
+        groupBox->setGeometry(QRect(40, 110, 721, 211));
         label_2 = new QLabel(groupBox);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(30, 40, 161, 17));
@@ -105,9 +107,9 @@ public:
         label_wind = new QLabel(groupBox);
         label_wind->setObjectName("label_wind");
         label_wind->setGeometry(QRect(290, 90, 61, 17));
-        label_humidity_2 = new QLabel(groupBox);
-        label_humidity_2->setObjectName("label_humidity_2");
-        label_humidity_2->setGeometry(QRect(290, 130, 61, 17));
+        label_humidity = new QLabel(groupBox);
+        label_humidity->setObjectName("label_humidity");
+        label_humidity->setGeometry(QRect(290, 130, 61, 17));
         label_11 = new QLabel(groupBox);
         label_11->setObjectName("label_11");
         label_11->setGeometry(QRect(360, 90, 61, 17));
@@ -126,23 +128,30 @@ public:
         label_feel = new QLabel(groupBox);
         label_feel->setObjectName("label_feel");
         label_feel->setGeometry(QRect(120, 170, 61, 17));
+        label_min_2 = new QLabel(groupBox);
+        label_min_2->setObjectName("label_min_2");
+        label_min_2->setGeometry(QRect(200, 170, 67, 17));
+        label_min = new QLabel(groupBox);
+        label_min->setObjectName("label_min");
+        label_min->setGeometry(QRect(290, 170, 67, 17));
+        label_9 = new QLabel(groupBox);
+        label_9->setObjectName("label_9");
+        label_9->setGeometry(QRect(360, 170, 67, 17));
+        label_max = new QLabel(groupBox);
+        label_max->setObjectName("label_max");
+        label_max->setGeometry(QRect(430, 170, 67, 17));
         labelJSonText = new QTextEdit(centralwidget);
         labelJSonText->setObjectName("labelJSonText");
-        labelJSonText->setGeometry(QRect(40, 310, 691, 231));
-        widget = new QWidget(centralwidget);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(40, 20, 150, 27));
-        horizontalLayout = new QHBoxLayout(widget);
-        horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
-        label->setObjectName("label");
-
-        horizontalLayout->addWidget(label);
-
+        labelJSonText->setGeometry(QRect(40, 330, 721, 231));
         btn_go = new QPushButton(centralwidget);
         btn_go->setObjectName("btn_go");
-        btn_go->setGeometry(QRect(640, 20, 89, 25));
+        btn_go->setGeometry(QRect(500, 20, 91, 61));
+        label_7 = new QLabel(centralwidget);
+        label_7->setObjectName("label_7");
+        label_7->setGeometry(QRect(40, 60, 100, 25));
+        label_8 = new QLabel(centralwidget);
+        label_8->setObjectName("label_8");
+        label_8->setGeometry(QRect(40, 20, 100, 25));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -151,6 +160,9 @@ public:
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        QWidget::setTabOrder(textZipCode, labelJSonText);
+        QWidget::setTabOrder(labelJSonText, btn_go);
+        QWidget::setTabOrder(btn_go, comboCountry);
 
         retranslateUi(MainWindow);
 
@@ -169,15 +181,20 @@ public:
         label_4->setText(QCoreApplication::translate("MainWindow", "Wind", nullptr));
         label_17->setText(QCoreApplication::translate("MainWindow", "Humidity", nullptr));
         label_wind->setText(QCoreApplication::translate("MainWindow", "20", nullptr));
-        label_humidity_2->setText(QCoreApplication::translate("MainWindow", "20", nullptr));
+        label_humidity->setText(QCoreApplication::translate("MainWindow", "20", nullptr));
         label_11->setText(QCoreApplication::translate("MainWindow", "City", nullptr));
         label_12->setText(QCoreApplication::translate("MainWindow", "Country", nullptr));
         label_city->setText(QCoreApplication::translate("MainWindow", "Chicago", nullptr));
         label_country->setText(QCoreApplication::translate("MainWindow", "USA", nullptr));
         label_15->setText(QCoreApplication::translate("MainWindow", "Real Feel", nullptr));
         label_feel->setText(QCoreApplication::translate("MainWindow", "175", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Country", nullptr));
+        label_min_2->setText(QCoreApplication::translate("MainWindow", "Min", nullptr));
+        label_min->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        label_9->setText(QCoreApplication::translate("MainWindow", "Max", nullptr));
+        label_max->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         btn_go->setText(QCoreApplication::translate("MainWindow", "Go", nullptr));
+        label_7->setText(QCoreApplication::translate("MainWindow", "Zip Code", nullptr));
+        label_8->setText(QCoreApplication::translate("MainWindow", "Country", nullptr));
     } // retranslateUi
 
 };

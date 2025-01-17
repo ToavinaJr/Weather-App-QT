@@ -9,6 +9,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

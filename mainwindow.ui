@@ -17,9 +17,9 @@
    <widget class="QComboBox" name="comboCountry">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>170</x>
       <y>20</y>
-      <width>241</width>
+      <width>291</width>
       <height>25</height>
      </rect>
     </property>
@@ -27,9 +27,9 @@
    <widget class="QLineEdit" name="textZipCode">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>20</y>
-      <width>113</width>
+      <x>170</x>
+      <y>60</y>
+      <width>291</width>
       <height>25</height>
      </rect>
     </property>
@@ -38,8 +38,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>80</y>
-      <width>691</width>
+      <y>110</y>
+      <width>721</width>
       <height>211</height>
      </rect>
     </property>
@@ -166,7 +166,7 @@
       <string>20</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_humidity_2">
+    <widget class="QLabel" name="label_humidity">
      <property name="geometry">
       <rect>
        <x>290</x>
@@ -257,47 +257,106 @@
       <string>175</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_min_2">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>170</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Min</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_min">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>170</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_9">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>170</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Max</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_max">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>170</y>
+       <width>67</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QTextEdit" name="labelJSonText">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>310</y>
-      <width>691</width>
+      <y>330</y>
+      <width>721</width>
       <height>231</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>150</width>
-      <height>27</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Country</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
    <widget class="QPushButton" name="btn_go">
     <property name="geometry">
      <rect>
-      <x>640</x>
+      <x>500</x>
       <y>20</y>
-      <width>89</width>
-      <height>25</height>
+      <width>91</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
      <string>Go</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>60</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zip Code</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>20</y>
+      <width>100</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Country</string>
     </property>
    </widget>
   </widget>
@@ -313,6 +372,12 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>textZipCode</tabstop>
+  <tabstop>labelJSonText</tabstop>
+  <tabstop>btn_go</tabstop>
+  <tabstop>comboCountry</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

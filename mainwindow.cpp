@@ -236,7 +236,6 @@ void MainWindow::getCountryList()
         "ZM - Zambia",
         "ZW - Zimbabwe"
     };
-
 }
 
 void MainWindow::populateComboCountry()
@@ -301,25 +300,38 @@ void MainWindow::onWeatherDataReceived()
         QString weatherDescription = jsonObject["weather"].toArray()[0].toObject()["description"].toString();
         int weatherConditionCode = jsonObject["weather"].toArray()[0].toObject()["id"].toInt();
 
-        double windSpeed = jsonObject["weather"].toArray()[0].toObject()["speed"].toDouble();
+        double windSpeed = jsonObject["weather"].toObject()["speed"].toDouble();
 
         // Charger les températures
-        double temp = jsonObject["main"].toArray()[0].toObject()["temp"].toDouble();
-        double temp_min = jsonObject["main"].toArray()[0].toObject()["temp_min"].toDouble();
-        double temp_max = jsonObject["main"].toArray()[0].toObject()["temp_ma"].toDouble();
+        double temp = jsonObject["main"].toObject()["temp"].toDouble();
+        double temp_max = jsonObject["main"].toObject()["temp_max"].toDouble();
+        double temp_min = jsonObject["main"].toObject()["temp_min"].toDouble();
 
-        double feel_like = jsonObject["main"].toArray()[0].toObject()["feels_like"].toDouble();
-        double humidity = jsonObject["main"].toArray()[0].toObject()["humidity"].toDouble();
+        double feel_like = jsonObject["main"].toObject()["feels_like"].toDouble();
+        double humidity = jsonObject["main"].toObject()["humidity"].toDouble();
 
+        QString country = jsonObject["sys"].toObject()["country"].toString();
         QString city = jsonObject["name"].toString();
-        QString country = jsonObject["country"].toString();
 
         // Setting all the rights labels
         ui->label_temperature->setText(QString::number(temp));
+        ui->label_min->setText(QString::number(temp_min));
+        ui->label_max->setText(QString::number(temp_max));
+
+        ui->label_country->setText(country);
+        ui->label_humidity->setText(QString::number(humidity));
+        ui->label_city->setText(city);
+        ui->label_feel->setText(QString::number(feel_like));
     }
     else
     {
         qDebug() << "Erreur : " << reply->error();
+        QMessageBox msgBox;
+        msgBox.setText("Une erreur s'est produite.");
+        msgBox.setInformativeText("Voulez vous redémarrer votre session ?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int ret = msgBox.exec();
     }
 
     reply->deleteLater();
